@@ -18,7 +18,7 @@ sed -i 's/\tdetect_package/\t# detect_package/g' /jffs/softcenter/scripts/ks_tar
 
 ## 机型/固件支持
 
-### [mips](https://github.com/zusterben/plan_a/tree/master/bin/mips)
+### [mips](https://github.com/zusterben/plan_d/tree/master/bin/mips)
 
 > **mips**离线安装包仅能在mips架构机器上使用！具体支持机型如下：
 
@@ -32,7 +32,7 @@ sed -i 's/\tdetect_package/\t# detect_package/g' /jffs/softcenter/scripts/ks_tar
 
 ----
 
-### [arm](https://github.com/zusterben/plan_a/tree/master/bin/arm)
+### [arm](https://github.com/zusterben/plan_d/tree/master/bin/arm)
 
 > **arm**离线安装包仅能在博通平台，且linux内核为2.6.36.4的armv7架构的机器上使用！
 
@@ -51,7 +51,7 @@ sed -i 's/\tdetect_package/\t# detect_package/g' /jffs/softcenter/scripts/ks_tar
 
 ----
 
-### [arm64](https://github.com/zusterben/plan_a/tree/master/bin/arm64)
+### [arm64](https://github.com/zusterben/plan_d/tree/master/bin/arm64)
 
 > **arm64**离线安装包支持所有arm64/aarch64架构的机器上使用！
 
@@ -68,7 +68,7 @@ sed -i 's/\tdetect_package/\t# detect_package/g' /jffs/softcenter/scripts/ks_tar
 
 ----
 
-### [armng](https://github.com/zusterben/plan_a/tree/master/bin/armng)
+### [armng](https://github.com/zusterben/plan_d/tree/master/bin/armng)
 
 > **armng**离线安装包能在内核为4.1和3.14的armv7架构的机器上使用！
 
@@ -84,7 +84,7 @@ sed -i 's/\tdetect_package/\t# detect_package/g' /jffs/softcenter/scripts/ks_tar
 
 ----
 
-### [mipsel](https://github.com/zusterben/plan_a/tree/master/bin/mipsel)
+### [mipsel](https://github.com/zusterben/plan_d/tree/master/bin/mipsel)
 
 > **mipsel**离线安装包仅能在mipsel架构的机器上使用！
 
