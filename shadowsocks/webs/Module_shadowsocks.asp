@@ -2039,7 +2039,7 @@ function version_show() {
 	if(db_scarch["softcenter_arch"]=="armv7l")
 		scarch="arm";
 	else if(db_scarch["softcenter_arch"]=="aarch64")
-		scarch="arm";
+		scarch="arm64";
 	else
 		scarch=db_scarch["softcenter_arch"];
 	$.ajax({

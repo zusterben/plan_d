@@ -1,8 +1,8 @@
 {
-"build_date":"2020-08-06_16:48:41",
+"build_date":"2020-08-06_17:53:15",
 "description":"科学上网",
 "home_url":"Module_shadowsocks.asp",
-"md5":"1b326954f2d0e4298a337bf454e16249",
+"md5":"007d0cd25770b08e4cb6339a26f811b4",
 "name":"shadowsocks",
 "tar_url": "https://raw.githubusercontent.com/zusterben/plan_d/master/bin/mips/shadowsocks.tar.gz", 
 "title":"科学上网",
