@@ -49,7 +49,6 @@ update_ss(){
 	ss_basic_version_web1=`curl -s --connect-timeout 5 $main_url/version | sed -n 1p`
 	if [ -n "$ss_basic_version_web1" ];then
 		echo_date 检测到主服务器在线版本号：$ss_basic_version_web1
-		dbus set ss_basic_version_web=$ss_basic_version_web1
 		if [ "$ss_basic_version_local" != "$ss_basic_version_web1" ];then
 		echo_date 主服务器在线版本号："$ss_basic_version_web1" 和本地版本号："$ss_basic_version_local" 不同！
 			cd /tmp
