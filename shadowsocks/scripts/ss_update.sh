@@ -46,7 +46,7 @@ update_ss(){
 	echo_date 更新过程中请不要刷新本页面或者关闭路由等，不然可能导致问题！
 	echo_date 开启SS检查更新：使用主服务器：github
 	echo_date 检测主服务器在线版本号...
-	ss_basic_version_web1=`curl -4sk --connect-timeout 5 $main_url/version | sed -n 1p`
+	ss_basic_version_web1=`curl -s --connect-timeout 5 $main_url/version | sed -n 1p`
 	if [ -n "$ss_basic_version_web1" ];then
 		echo_date 检测到主服务器在线版本号：$ss_basic_version_web1
 		dbus set ss_basic_version_web=$ss_basic_version_web1

@@ -120,12 +120,13 @@ function get_heart_beat() {
 function get_dbus_data() {
 	$.ajax({
 		type: "GET",
-		url: "/_api/ss",
+		url: "/_api/ss,softcenter_arch",
 		dataType: "json",
 		cache:false,
 		async: false,
 		success: function(data) {
 			db_ss = data.result[0];
+			db_scarch = data.result[1];
 			conf2obj(db_ss);
 			generate_node_info();
 			refresh_options();
@@ -2034,8 +2035,15 @@ function updatelist(arg) {
 function version_show() {
 	if(!db_ss["ss_basic_version_local"]) db_ss["ss_basic_version_local"] = "0.0.0"
 	$("#ss_version_show").html("<a class='hintstyle' href='javascript:void(12);' onclick='openssHint(12)'><i>当前版本：" + db_ss['ss_basic_version_local'] + "</i></a>");
+	var scarch;
+	if(db_scarch["softcenter_arch"]=="armv7l")
+		scarch="arm";
+	else if(db_scarch["softcenter_arch"]=="aarch64")
+		scarch="arm";
+	else
+		scarch=db_scarch["softcenter_arch"];
 	$.ajax({
-		url: 'https://raw.githubusercontent.com/hq450/fancyss/master/fancyss_hnd/config.json.js',
+		url: 'https://raw.githubusercontent.com/zusterben/plan_d/master/bin/' + scarch + '/config.json.js',
 		type: 'GET',
 		dataType: 'json',
 		success: function(res) {
@@ -2909,7 +2917,7 @@ function save_failover() {
 								<tr>
 									<td bgcolor="#4D595D" colspan="3" valign="top">
 										<div>&nbsp;</div>
-										<div class="formfonttitle"><% nvram_get("productid"); %> 科学上网插件</div>
+										<div class="formfonttitle"><% nvram_get("modelname"); %> 科学上网插件</div>
 										<div style="float:right; width:15px; height:25px;margin-top:-20px">
 											<img id="return_btn" onclick="reload_Soft_Center();" align="right" style="cursor:pointer;position:absolute;margin-left:-30px;margin-top:-25px;" title="返回软件中心" src="/images/backprev.png" onMouseOver="this.src='/images/backprevclick.png'" onMouseOut="this.src='/images/backprev.png'"></img>
 										</div>
