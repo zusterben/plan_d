@@ -1838,13 +1838,30 @@ function ping_test() {
 		data: JSON.stringify(postData),
 		dataType: "json",
 		success: function(response) {
-			write_ping(response);
+			get_result(id);
 		},
 		error: function(XmlHttpRequest, textStatus, errorThrown){
 			//console.log(XmlHttpRequest.responseText);
 			$(".ping").html("失败!");
 		},
 		timeout: 60000
+	});
+}
+function get_result(n) {
+	$.ajax({
+		type: "POST",
+		async: true,
+		cache:false,
+		url: "/_result/"+n,
+		dataType: "json",
+		success: function(response) {
+			if (response.result == n){
+				setTimeout("get_result("+response.result+");", 1000);
+			}
+			else {
+				write_ping(response);
+			}
+		},
 	});
 }
 function write_ping(r){
@@ -2199,8 +2216,9 @@ function get_ss_status_front() {
 		url: "/_api/",
 		async: true,
 		data: JSON.stringify(postData),
-		success: function(response) {
-			var arr = response.result.split("@@");
+		dataType: "json",
+		success: function(ssstatus) {
+			var arr = ssstatus.result.split("@@");
 			if (arr[0] == "" || arr[1] == "") {
 				E("ss_state2").innerHTML = "国外连接 - " + "Waiting for first refresh...";
 				E("ss_state3").innerHTML = "国内连接 - " + "Waiting for first refresh...";
@@ -2412,9 +2430,7 @@ function count_down_close() {
 		--x;
 	setTimeout("count_down_close();", 1000);
 }
-function reload_Soft_Center() {
-	location.href = "/Module_Softcenter.asp";
-}
+
 function getACLConfigs() {
 	var dict = {};
 	acl_node_max = 0;

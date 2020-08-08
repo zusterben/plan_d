@@ -1,2 +1,3 @@
 5a3941090bf039fe031e544dda667003 shadowsocks_1.0.0.tar.gz
-bafc0e05f15c728ae3716b3f732e2fb7 shadowsocks_1.0.1.tar.gz
+c92650d7155ec4baf06eda6975191504 shadowsocks_1.0.1.tar.gz
+f073cbb01e76511cf0614f86d262b74c shadowsocks_1.0.2.tar.gz
