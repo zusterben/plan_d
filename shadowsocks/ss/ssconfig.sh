@@ -291,11 +291,11 @@ kill_process() {
 		echo_date 关闭dns2socks进程...
 		killall dns2socks >/dev/null 2>&1
 	fi
-	smartdns_process=$(pidof smartdns)
-	if [ -n "$smartdns_process" ]; then
-		echo_date 关闭smartdns进程...
-		killall smartdns >/dev/null 2>&1
-	fi
+	#smartdns_process=$(pidof smartdns)
+	#if [ -n "$smartdns_process" ]; then
+	#	echo_date 关闭smartdns进程...
+	#	killall smartdns >/dev/null 2>&1
+	#fi
 	koolgame_process=$(pidof koolgame)
 	if [ -n "$koolgame_process" ]; then
 		echo_date 关闭koolgame进程...
@@ -1751,11 +1751,11 @@ load_tproxy() {
 		if lsmod | grep $MODULE &>/dev/null; then return 0; else return 1; fi
 	}
 
-	if ! checkmoduleisloaded; then
-		insmod /lib/modules/${OS}/kernel/net/netfilter/${MODULE}.ko
+	if checkmoduleisloaded; then
+		insmod $MODULES
 	fi
 
-	if ! checkmoduleisloaded; then
+	if checkmoduleisloaded; then
 		echo "One or more modules are missing. Can't start."
 		close_in_five
 	fi
@@ -2393,8 +2393,8 @@ apply_ss() {
 	create_ipset
 	create_dnsmasq_conf
 	# do not re generate json on router start, use old one
-	[ "$ss_basic_type" != "3" ] && creat_ss_json
-	[ "$ss_basic_type" = "3" ] && creat_v2ray_json
+	[ "$ss_basic_type" != "3" ] && create_ss_json
+	[ "$ss_basic_type" = "3" ] && create_v2ray_json
 	[ "$ss_basic_type" == "0" ] || [ "$ss_basic_type" == "1" ] && start_ss_redir
 	[ "$ss_basic_type" == "2" ] && start_koolgame
 	[ "$ss_basic_type" == "3" ] && start_v2ray
